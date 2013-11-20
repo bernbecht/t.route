@@ -11,22 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131113200456) do
+ActiveRecord::Schema.define(version: 20131119201903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cities", force: true do |t|
-    t.string   "name"
-    t.float    "lat"
-    t.float    "lng"
-    t.integer  "country_id"
+    t.string   "name",       null: false
+    t.float    "latitude",   null: false
+    t.float    "longitude",  null: false
+    t.integer  "country_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "companies", force: true do |t|
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "countries", force: true do |t|
-    t.string   "name"
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tickets", force: true do |t|
+    t.integer  "number",           null: false
+    t.date     "date",             null: false
+    t.time     "time",             null: false
+    t.time     "duration",         null: false
+    t.integer  "company_id",       null: false
+    t.integer  "transport_way_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transport_ways", force: true do |t|
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
