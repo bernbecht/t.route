@@ -1,0 +1,119 @@
+ html, body{ 
+ 	height: 100%; 
+ 	min-height: 400px;
+ 	overflow-y:hidden;
+ 	background-image: url(image_path('brushed.png'));
+ }
+
+
+ header{
+ 	height: 70px;
+ 	margin: 0%;
+ }
+
+ .header{
+ 	border-bottom: 1px solid #aaa;
+ 	-webkit-box-shadow: 0px 1px 1px #FFF;
+ 	-moz-box-shadow:    0px 1px 1px #FFF;
+ 	box-shadow:         0px 1px 1px #FFF;
+
+ }
+
+ .navbar{
+ 	margin: 0;
+ }
+
+ .map_index_content{
+ 	width: 100%;
+	// background: red;
+	padding: 20px;
+	padding-top: 20px;
+}
+
+.map-cities-canvas{
+	float: left;
+	// background: green;
+	height:100%;
+	width: 37.5%;
+}
+
+.map-canvas { 
+	float: left;
+	// background: blue;
+	height:100%;
+	width: 57.5%;
+	margin-left: 5%;
+}
+
+#map{
+	width: 100%;
+	height: 100%;
+}
+
+.map-cities{
+	// border: 1px solid black;
+	-moz-box-shadow:    inset 0 0 15px #707070;
+	-webkit-box-shadow: inset 0 0 15px #707070;
+	box-shadow:         inset 0 0 15px #707070;
+	border-radius: 5px;
+	background: #BBB;
+	width: 100%;
+	height: 100%;
+	// background: pink;
+	padding: 10px;
+}
+
+.map-city-search-canvas{
+	width: 100%;
+	height: 55px;
+	background-image: url(image_path('brushed.png'));
+	padding-left: 2px;
+	padding-right: 2px;
+	border-radius:5px;
+	-webkit-box-shadow: 3px 3px 3px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    3px 3px 3px rgba(50, 50, 50, 0.75);
+	box-shadow:         3px 3px 3px rgba(50, 50, 50, 0.75);
+}
+
+.map-city-search-canvas input{
+	height:100%;
+	background:transparent;
+	border:0;
+	font-size: 20px;
+}
+
+.map-list-cities-canvas{
+	width: 100%;
+	// padding:20px 0;
+	// height: 90%;
+	// background: green;
+	overflow-y: scroll;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.map-list-cities-canvas ul{
+	margin: 0;
+	padding: 0;
+}
+
+.map-list-cities-canvas li{
+	width: 100%;
+	height: 40px;
+	margin-bottom: 10px;
+	background: purple;
+	list-style-image: none;
+	list-style-type: none;
+	-webkit-box-shadow: 3px 3px 3px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    3px 3px 3px rgba(50, 50, 50, 0.75);
+	box-shadow:         3px 3px 3px rgba(50, 50, 50, 0.75);
+	background-image: url(image_path('brushed.png'));
+}
+
+.map-search-tickets-btn-canvas{
+	width: 100%;
+	height: 55px;
+	background-image: url(image_path('brushed.png'));
+	border-radius: 5px;
+}
+

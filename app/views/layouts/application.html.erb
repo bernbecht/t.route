@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TestPg</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<title>TestPg</title>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	<%= stylesheet_link_tag    "bootstrap" %>
+	<%= yield :css_includes %>
 
-<%= yield %>
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "bootstrap.min" %>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHYXfW9U1gX8Eul_mTLRh9pO5zB0e-xI8&sensor=true">
+	</script>
+	<%= yield :javascript_includes %>
+	
+	<%= csrf_meta_tags %>
+	</head>
+	<body>
 
-</body>
-</html>
+	<%= yield %>
+
+	</body>
+	</html>
