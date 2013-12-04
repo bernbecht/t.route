@@ -13,7 +13,12 @@ class City < ActiveRecord::Base
 	:numericality => {:greater_than => -181.999999, :less_than => 180.000001}
 
 
-
+	before_create :downcase
+	before_save :downcase
+	private
+	def downcase
+		self.name = self.name.downcase.to_s
+	end
 	
 
 end

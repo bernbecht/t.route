@@ -4,21 +4,25 @@
 	<title>TestPg</title>
 	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	<%= stylesheet_link_tag    "bootstrap" %>
+	<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" media="screen" rel="stylesheet">
 	<%= yield :css_includes %>
 
+	
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= javascript_include_tag "bootstrap.min" %>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<script type="text/javascript"
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHYXfW9U1gX8Eul_mTLRh9pO5zB0e-xI8&sensor=true">
 	</script>
-	<%= yield :javascript_includes %>
-	
-	<%= csrf_meta_tags %>
-	</head>
-	<body>
+
+
+<%= yield :javascript_includes %>
+
+<%= csrf_meta_tags %>
+</head>
+<body>
 
 	<%= yield %>
 
-	</body>
-	</html>
+</body>
+</html>

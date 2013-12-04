@@ -1,6 +1,9 @@
 <% content_for :javascript_includes do %>
 <%= javascript_include_tag "map.js" %>
 <% end %>
+<% content_for :javascript_includes do %>
+<%= javascript_include_tag "autocomplete.js" %>
+<% end %>
 <% content_for :css_includes do %>
 <%= stylesheet_link_tag "map.css" %>
 <% end %>
@@ -8,24 +11,27 @@
 <%= render 'layouts/header' %>
 
 <div class='map_index_content'>
-	<div class="map-cities-canvas">
-		<div class="map-cities">
-			<div class="map-city-search-canvas">
-					<input class="form-control" type="text" placeholder="Which city do you want to go?">
-			</div>
-			<div class="map-list-cities-canvas">
-				<ul>
-					<li></li>
-					
-				</ul>
-			</div>
-			<div class="map-search-tickets-btn-canvas">
-			</div>
-		</div>
-	</div>
+  <div class="map-cities-canvas">
+    <div class="map-cities">
+      <div class="map-city-search-canvas">
+       <input id='city-input'class="form-control" type="text" placeholder="Where are you?"/>
+       <div class="autocomplete-container">
+        <ul>
+        </ul>
+      </div>
+    </div>
+    <div class="map-list-cities-canvas">
+      <ul class="map-list-cities">
+        
+      </ul>
+    </div>
+    <div class="map-search-tickets-btn-canvas">
+    </div>
+  </div>
+</div>
 
 
-	<div class="map-canvas">
-		<div id="map"></div>
-	</div>
+<div class="map-canvas">
+  <div id="map"></div>
+</div>
 </div>

@@ -6,6 +6,16 @@
  }
 
 
+ ul{
+ 	margin: 0;
+ 	padding: 0;
+ }
+
+ li{
+ 	list-style-image: none;
+ 	list-style-type: none;
+ }
+
  header{
  	height: 70px;
  	margin: 0%;
@@ -34,15 +44,15 @@
 	float: left;
 	// background: green;
 	height:100%;
-	width: 37.5%;
+	width: 37%;
 }
 
 .map-canvas { 
 	float: left;
 	// background: blue;
 	height:100%;
-	width: 57.5%;
-	margin-left: 5%;
+	width: 62%;
+	margin-left: 1%;
 }
 
 #map{
@@ -73,6 +83,35 @@
 	-webkit-box-shadow: 3px 3px 3px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    3px 3px 3px rgba(50, 50, 50, 0.75);
 	box-shadow:         3px 3px 3px rgba(50, 50, 50, 0.75);
+	position: relative;
+}
+
+.autocomplete-container{
+	width: 100%;
+	background: #555;
+	position: absolute;
+	top: 55px;
+	left:0;
+	z-index: 1000;
+	opacity:0.8;
+	visibility: hidden;
+	color: #fff;
+	font-size: 15px;
+}
+
+.autocomplete-container ul{
+	padding: 5px;
+}
+
+.autocomplete-container li{
+	margin-bottom: 5px;
+	text-transform:capitalize;
+}
+
+.autocomplete-container li:hover{
+	-webkit-transition: background 0.3s ease;
+	transition: background 0.3s ease;
+	background:#000;
 }
 
 .map-city-search-canvas input{
@@ -87,7 +126,7 @@
 	// padding:20px 0;
 	// height: 90%;
 	// background: green;
-	overflow-y: scroll;
+	overflow-y: auto;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -99,7 +138,7 @@
 
 .map-list-cities-canvas li{
 	width: 100%;
-	height: 40px;
+	// height: 60px;
 	margin-bottom: 10px;
 	background: purple;
 	list-style-image: none;
@@ -108,7 +147,38 @@
 	-moz-box-shadow:    3px 3px 3px rgba(50, 50, 50, 0.75);
 	box-shadow:         3px 3px 3px rgba(50, 50, 50, 0.75);
 	background-image: url(image_path('brushed.png'));
+	border-radius: 5px;
+	padding: 5px;
+	color: #888;
 }
+
+.city-name {
+	font-size: 22px;
+	float: left;
+	margin-left: 5px;
+	text-transform:capitalize;
+}
+
+.city-flag{
+	height:40px;
+	width: 40px;
+	float: left;
+}
+
+.city-date{
+	float: right;
+	font-size: 22px;
+}
+
+.city-delete{
+	margin-left: 5px;
+	float: right;
+}
+
+.city-delete:hover{
+	pointer:cursor;
+}
+
 
 .map-search-tickets-btn-canvas{
 	width: 100%;
@@ -116,4 +186,7 @@
 	background-image: url(image_path('brushed.png'));
 	border-radius: 5px;
 }
+
+
+
 
