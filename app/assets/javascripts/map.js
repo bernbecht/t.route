@@ -105,7 +105,7 @@ function insertCityOnCitiesList(){
 		var city_name = $(this).html();
 		$.each(cities_json, function(i, v) {
 			if (v.name == city_name ) {
-				$('<li><div><img alt="'+v.country+'" class="city-flag" src="/assets/flags/'+v.country+'.png"><div class="city-name">'+city_name+'</div><div class="city-delete"><span class="glyphicon glyphicon-remove-sign"></span></div><div class="city-date">Select Date</div><div class="clearfix"></div></div></li>').appendTo('.map-list-cities-canvas ul');
+				$('<li><div><img alt="'+v.country+'" class="city-flag" src="/assets/flags/'+v.country+'.png"><div class="city-name">'+city_name+'</div><div class="city-delete"><span class="glyphicon glyphicon-remove-sign"></span></div><div class="city-date"><span class="glyphicon glyphicon-calendar"></span><input class="city-date-input" type="text" placeholder="When?"/></span></div><div class="clearfix"></div></div></li>').appendTo('.map-list-cities-canvas ul');
 				insertMarkerOnMap(v.latitude,v.longitude);
 			}
 		});
@@ -116,6 +116,7 @@ function insertCityOnCitiesList(){
 
 		autoCompleteStandartEvents();
 		removeCityOnCitiesList();
+		insertDateCity();
 	});
 
 	//come back to autocomplete standart behavior
@@ -133,6 +134,10 @@ function removeCityOnCitiesList(){
 	});
 }
 
+function insertDateCity(){
+	$('.city-date-input').datepicker();
+}
+
 $(document).ready(function(){
 	initialize();
 	setHeightForMapCitiesCanvas();
@@ -140,4 +145,7 @@ $(document).ready(function(){
 	autoCompleteStandartEvents();
 	autoComplete();
 	removeCityOnCitiesList();
+	insertDateCity();
+	//$('.city-date-input').datepicker();
+
 });
