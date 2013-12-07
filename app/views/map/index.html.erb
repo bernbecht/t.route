@@ -30,13 +30,13 @@
           <div>
             <img alt="'+v.country+'" class="city-flag" src="/assets/flags/'+v.country+'.png">
             <div class="city-name">'+city_name+'</div>
+            <input class="city-country" type="hidden" value='+v.country+' />
             <div class="city-delete">
               <span class="glyphicon glyphicon-remove-sign"></span>
             </div>
             <div class="city-date">
               <span class="glyphicon glyphicon-calendar"></span>
-              <input class="city-date-input" type="text" placeholder="When?"/>
-              
+              <input class="city-date-input" type="text" placeholder="When?"/> 
             </span>
           </div>
           <div class="clearfix"></div>
@@ -45,7 +45,7 @@
     </ul>
   </div>
   <div class="map-search-tickets-btn-canvas">
-
+    <button id="search-tickets-btn" class="btn">Search Tickets</button>
   </div>
 </div>
 </div>

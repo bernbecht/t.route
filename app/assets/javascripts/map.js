@@ -138,6 +138,18 @@ function insertDateCity(){
 	$('.city-date-input').datepicker();
 }
 
+function searchTickets(){
+	$('#search-tickets-btn').click(function(){
+		// alert('oi');
+		$('.map-list-cities li').each(function(index){
+			alert($('.city-name',$(this)).html());
+			alert($('.city-country',$(this)).val());
+			alert($('.city-date-input',$(this)).val());
+
+		});
+	});
+}
+
 $(document).ready(function(){
 	initialize();
 	setHeightForMapCitiesCanvas();
@@ -146,6 +158,6 @@ $(document).ready(function(){
 	autoComplete();
 	removeCityOnCitiesList();
 	insertDateCity();
-	//$('.city-date-input').datepicker();
+	searchTickets();
 
 });
