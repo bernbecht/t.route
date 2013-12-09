@@ -1,0 +1,63 @@
+<% content_for :javascript_includes do %>
+<%= javascript_include_tag "map.js" %>
+<% end %>
+<% content_for :javascript_includes do %>
+<%= javascript_include_tag "autocomplete.js" %>
+<% end %>
+
+
+<% content_for :css_includes do %>
+<%= stylesheet_link_tag "map.css" %>
+<% end %>
+
+
+
+<%= render 'layouts/header' %>
+
+<div class='map_index_content'>
+  <div class="map-cities-canvas">
+   <div class="map-cities">
+    <div class="map-city-search-canvas">
+     <h2> We got a ROUTE for you!</h2>
+     <div class="autocomplete-container">
+      <ul>
+      </ul>
+    </div>
+  </div>
+
+  <div class="map-list-cities-canvas">
+    <ul class="ticket-list-cities">
+      <li>
+        <div>
+          <div class="path-name">
+            <div>
+              <p>To: CITY12313123</p>
+            </div>
+            <div>
+              <p>From: CITY</p>
+            </div>
+          </div>
+          <div class="path-date-info">
+            <div><p>When: CITY</p></div>
+            <div><p>Duration: CITY</p></div>
+          </div>
+
+        </div>
+        <div class="path-other">
+          <div><p>Price: 123123</p></div>
+          <div><p>By: Type</p></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+</div>
+</div>
+
+
+<div class="map-canvas">
+  <div id="map"></div>
+</div>
+</div>

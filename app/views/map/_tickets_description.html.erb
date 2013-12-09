@@ -1,0 +1,43 @@
+
+<div class="map-city-search-canvas">
+	<h2> We got a ROUTE for you!</h2>
+	<div class="autocomplete-container">
+		<ul>
+		</ul>
+	</div>
+</div>
+
+
+<div class="map-list-cities-canvas">
+	<ul class="ticket-list-cities">
+		<% @array_tickets.each do |ticket| -%>
+		<li>
+			<div>
+				<div class="path-name">
+					<div>
+						<p>To: <%= ticket.to_city.name %></p>
+					</div>
+					<div>
+						<p>From: <%= ticket.from_city.name %></p>
+					</div>
+				</div>
+				<div class="path-date-info">
+					<div><p>When: <%= date = ticket.date.to_s.split('-') 
+										date[2]+'/'+date[1]+'/'+date[0] %></p></div>
+					<div><p>Duration: <%= ticket.duration.to_s.split(' ')[1] %></p></div>
+				</div>
+				<div class="path-other">
+					<div><p>Price: <%= ticket.price %></p></div>
+					<div><p>By: <%= ticket.transport_way.name %></p></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</li>
+		<% end -%>
+	</ul>
+</div>
+
+<div class="map-search-tickets-btn-canvas">
+	<button id="change-cities-btn" class="btn">Change Cities</button>
+
+</div>

@@ -1,9 +1,7 @@
 class City < ActiveRecord::Base
 	belongs_to :country
-	has_many :tos
-	has_many :tickets, :through => :to
-	has_many :froms
-	has_many :tickets, :through => :from
+	has_many :tickets
+	
 
 	validates :name, presence: true, length:{maximum: 50, minimum: 2}
 	validates :latitude, presence: true

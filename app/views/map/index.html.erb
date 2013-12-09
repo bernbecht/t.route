@@ -4,7 +4,9 @@
 <% content_for :javascript_includes do %>
 <%= javascript_include_tag "autocomplete.js" %>
 <% end %>
-
+<% content_for :javascript_includes do %>
+<%= javascript_include_tag "bootstrap.js" %>
+<% end %>
 
 <% content_for :css_includes do %>
 <%= stylesheet_link_tag "map.css" %>
@@ -26,22 +28,7 @@
     </div>
     <div class="map-list-cities-canvas">
       <ul class="map-list-cities">
-        <li>
-          <div>
-            <img alt="'+v.country+'" class="city-flag" src="/assets/flags/'+v.country+'.png">
-            <div class="city-name">'+city_name+'</div>
-            <input class="city-country" type="hidden" value='+v.country+' />
-            <div class="city-delete">
-              <span class="glyphicon glyphicon-remove-sign"></span>
-            </div>
-            <div class="city-date">
-              <span class="glyphicon glyphicon-calendar"></span>
-              <input class="city-date-input" type="text" placeholder="When?"/> 
-            </span>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-      </li>
+        
     </ul>
   </div>
   <div class="map-search-tickets-btn-canvas">

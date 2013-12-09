@@ -8,6 +8,11 @@
  	background-image: url(image_path('brushed.png'));
  }
 
+ h1, h2, h3, h4, h5{
+ 	margin: 0;
+
+ }
+
 
  ul{
  	margin: 0;
@@ -193,9 +198,7 @@
 	border: 0;
 	color: $gray_medium;
 	cursor:pointer;
-
 }
-
 
 .map-search-tickets-btn-canvas{
 	width: 100%;
@@ -208,4 +211,64 @@
 	font-size: 10px;
 	position:absolute;
 }
+
+.ticket-list-cities p{
+	margin: 0;
+	font-size: 18px;
+	text-transform:capitalize;
+
+}
+
+.path-name{
+	float: left;
+	width: 170px;
+}
+
+.path-name p{
+	width:170px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.path-date-info{
+	float: left;
+	margin-left: 15px;
+}
+
+.path-other{
+	float: left;
+	margin-left: 30px;
+}
+
+.map-city-search-canvas h2{
+	padding: 8px;
+	color: $gray_medium;
+	text-align: center;
+}
+
+.map-search-tickets-btn-canvas button{
+	width: 100%;
+	height: 44px;
+	font-size: 20px;
+	color: $gray_dark;
+}
+
+header{
+	padding-top: 10px;
+}
+
+header a{
+	color: $gray_dark;
+}
+
+header a:hover{
+	color: $gray_medium;
+}
+
+
+.navbar-brand{
+	font-size: 30px;
+}
+
 

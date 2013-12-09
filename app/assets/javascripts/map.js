@@ -81,6 +81,7 @@ function autoCompleteStandartEvents(){
 }
 
 function insertMarkerOnMap(lat,longit){
+
 	var myLatlng = new google.maps.LatLng(lat,longit);	
 	var marker = new google.maps.Marker({
 		position: myLatlng,
@@ -105,7 +106,8 @@ function insertCityOnCitiesList(){
 		var city_name = $(this).html();
 		$.each(cities_json, function(i, v) {
 			if (v.name == city_name ) {
-				$('<li><div><img alt="'+v.country+'" class="city-flag" src="/assets/flags/'+v.country+'.png"><div class="city-name">'+city_name+'</div><div class="city-delete"><span class="glyphicon glyphicon-remove-sign"></span></div><div class="city-date"><span class="glyphicon glyphicon-calendar"></span><input class="city-date-input" type="text" placeholder="When?"/></span></div><div class="clearfix"></div></div></li>').appendTo('.map-list-cities-canvas ul');
+				$('<li><div><img alt="'+v.country+'" class="city-flag" src="/assets/flags/'+v.country+'.png"><div class="city-name">'+city_name+'</div><input class="city-country" type="hidden" value='+v.country+' /><div class="city-delete"><span class="glyphicon glyphicon-remove-sign"></span></div><div class="city-date"><span class="glyphicon glyphicon-calendar"></span><input class="city-date-input" type="text" placeholder="When?"/></span></div><div class="clearfix"></div></div></li>').appendTo('.map-list-cities-canvas ul');
+				
 				insertMarkerOnMap(v.latitude,v.longitude);
 			}
 		});
@@ -113,6 +115,9 @@ function insertCityOnCitiesList(){
 		$('.autocomplete-container').css('visibility','hidden');
 		$('#city-input').val('');
 		$('#city-input').attr('placeholder', "Which city do you want to go?");
+		if($('.map-list-cities li').length==1)
+			$('.city-date').remove();
+
 
 		autoCompleteStandartEvents();
 		removeCityOnCitiesList();
@@ -127,7 +132,26 @@ function insertCityOnCitiesList(){
 
 function removeCityOnCitiesList(){
 	$('.city-delete').click(function(){
+		var li = $(this).parent().parent();
+		var city_name = $('.city-name', li).html();
+		
+		$.each(cities_json, function(i, v) {
+			if (v.name == city_name ){
+				
+				var myLatlng = new google.maps.LatLng(v.latitude,v.longitude);	
+				var marker = new google.maps.Marker({
+					position: myLatlng,
+					map: map
+				});
+				
+				marker.setMap(null)
+
+			}
+		});
+
 		$(this).parent().parent().remove();
+
+		
 
 		if($('.map-list-cities li').length==0)
 			$('#city-input').attr('placeholder', "Where are you?");
@@ -135,19 +159,72 @@ function removeCityOnCitiesList(){
 }
 
 function insertDateCity(){
-	$('.city-date-input').datepicker();
+	$('.city-date-input').datepicker({dateFormat: "dd/mm/yy"});
 }
+
 
 function searchTickets(){
 	$('#search-tickets-btn').click(function(){
-		// alert('oi');
-		$('.map-list-cities li').each(function(index){
-			alert($('.city-name',$(this)).html());
-			alert($('.city-country',$(this)).val());
-			alert($('.city-date-input',$(this)).val());
 
+		search_tickets =[];
+		$('.map-list-cities li').each(function(index){
+			item = {};
+			item['city'] = $('.city-name',$(this)).html();
+			item['country'] = $('.city-country',$(this)).val();
+			item['date'] = $('.city-date-input',$(this)).val();
+			search_tickets.push(item);
 		});
+
+		//ensures it is a string before sending to server
+		json =  JSON.stringify(search_tickets);
+
+		//alert(search_tickets);
+
+
+		$.ajax({
+			url: "http://localhost:3000/map/search",
+			type: "GET",
+			data: { json : json }
+		}).done(function(data) {
+			// alert(data);
+			if(data != "null"){
+				list_cities = $('.map-cities').html();
+				// alert(list_cities);
+				$('.map-cities').children().remove();
+				$(data).appendTo('.map-cities');
+				setHeightForMapCitiesCanvas();
+				changeCitiesList();
+			}
+			else{
+				$('#search-tickets-btn').text("Nope, no route for you :/")
+				setTimeout(function () {
+					$('#search-tickets-btn').text("Search Again");
+				}, 2000);
+			}
+			
+		}).error(function(){
+
+		}).complete(function(){
+		});
+
 	});
+}
+
+function changeCitiesList(){
+	$('#change-cities-btn').click(function(){
+		list_tickets = $('.map-cities').html();
+		$('.map-cities').children().remove();
+		$(list_cities).appendTo('.map-cities');
+		$('.city-date-input').remove();
+		$('<input class="city-date-input" type="text" placeholder="When?"/>').appendTo('.city-date');
+		setHeightForMapCitiesCanvas();
+		searchTickets();
+		insertDateCity();
+		removeCityOnCitiesList();
+		autoComplete();
+
+	});
+	
 }
 
 $(document).ready(function(){
